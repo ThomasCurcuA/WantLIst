@@ -223,6 +223,25 @@ const translations: Record<Language, Record<string, string>> = {
     // Clipboard detection
     "clipboard.found": "URL found in clipboard",
     "clipboard.add": "Add to Wishlist",
+
+    // iOS Shortcut
+    "shortcut.title": "iOS Shortcut",
+    "shortcut.subtitle": "Add products from Safari's share menu",
+    "shortcut.intro": "Create an Apple Shortcut to add products directly from Safari's share menu.",
+    "shortcut.step1": "Open the Shortcuts app on your iPhone",
+    "shortcut.step2": "Tap + to create a new shortcut",
+    "shortcut.step3": "Rename it to \"Add to WantList\"",
+    "shortcut.step4title": "Add a \"Text\" action",
+    "shortcut.step4desc": "Type the URL below, then tap \"Shortcut Input\" from the variables above the keyboard",
+    "shortcut.step5title": "Add an \"Open URL\" action",
+    "shortcut.step5desc": "It will automatically use the text from the previous step",
+    "shortcut.step6title": "Enable Share Sheet",
+    "shortcut.step6desc": "Tap the \u2139\ufe0f icon at the bottom \u2192 enable \"Show in Share Sheet\" \u2192 accept URLs",
+    "shortcut.done": "Done! Now when you share a link from Safari, you'll see \"Add to WantList\" in the share menu!",
+    "shortcut.copyUrl": "Copy URL",
+    "shortcut.copied": "Copied!",
+    "profile.iosShortcut": "iOS Shortcut",
+    "profile.shareFromSafari": "Share from Safari",
   },
   it: {
     // Navigation
@@ -440,6 +459,25 @@ const translations: Record<Language, Record<string, string>> = {
     // Clipboard detection
     "clipboard.found": "URL trovato negli appunti",
     "clipboard.add": "Aggiungi alla Wishlist",
+
+    // iOS Shortcut
+    "shortcut.title": "Scorciatoia iOS",
+    "shortcut.subtitle": "Aggiungi prodotti dal menu condividi di Safari",
+    "shortcut.intro": "Crea una Scorciatoia Apple per aggiungere prodotti direttamente dal menu condividi di Safari.",
+    "shortcut.step1": "Apri l'app Comandi Rapidi sul tuo iPhone",
+    "shortcut.step2": "Tocca + per creare un nuovo comando rapido",
+    "shortcut.step3": "Rinominalo in \"Add to WantList\"",
+    "shortcut.step4title": "Aggiungi un'azione \"Testo\"",
+    "shortcut.step4desc": "Scrivi l'URL qui sotto, poi tocca \"Input da condivisione\" dalle variabili sopra la tastiera",
+    "shortcut.step5title": "Aggiungi un'azione \"Apri URL\"",
+    "shortcut.step5desc": "User\u00e0 automaticamente il testo del passaggio precedente",
+    "shortcut.step6title": "Attiva la condivisione",
+    "shortcut.step6desc": "Tocca l'icona \u2139\ufe0f in basso \u2192 attiva \"Mostra nella condivisione\" \u2192 accetta URL",
+    "shortcut.done": "Fatto! Ora quando condividi un link da Safari, vedrai \"Add to WantList\" nel menu di condivisione!",
+    "shortcut.copyUrl": "Copia URL",
+    "shortcut.copied": "Copiato!",
+    "profile.iosShortcut": "Scorciatoia iOS",
+    "profile.shareFromSafari": "Condividi da Safari",
   },
 };
 

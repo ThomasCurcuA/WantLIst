@@ -15,6 +15,7 @@ import { HeartIcon } from "@/lib/icons";
 import AccountScreen from "./AccountScreen";
 import AppearanceScreen from "./AppearanceScreen";
 import SharedListsScreen from "./SharedListsScreen";
+import IOSShortcutScreen from "./IOSShortcutScreen";
 
 export default function ProfileScreen() {
   const { profile, wishes, sharedLists, signOut, setActiveTab } = useApp();
@@ -22,6 +23,7 @@ export default function ProfileScreen() {
   const [showAccount, setShowAccount] = useState(false);
   const [showAppearance, setShowAppearance] = useState(false);
   const [showSharedLists, setShowSharedLists] = useState(false);
+  const [showIOSShortcut, setShowIOSShortcut] = useState(false);
 
   const activeWishes = wishes.filter((w) => !w.is_bought);
   const boughtWishes = wishes.filter((w) => w.is_bought);
@@ -173,6 +175,24 @@ export default function ProfileScreen() {
                 )}
                 <ChevronRightIcon className="text-text-muted" />
               </motion.div>
+
+              <motion.div
+                whileTap={{ scale: 0.98 }}
+                onClick={() => setShowIOSShortcut(true)}
+                className="bg-card-bg rounded-2xl p-4 shadow-card flex items-center gap-4 cursor-pointer"
+              >
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" className="text-foreground">
+                  <rect x="3" y="3" width="7" height="7" rx="1.5" fill="currentColor" opacity="0.6" />
+                  <rect x="14" y="3" width="7" height="7" rx="1.5" fill="currentColor" opacity="0.3" />
+                  <rect x="3" y="14" width="7" height="7" rx="1.5" fill="currentColor" opacity="0.3" />
+                  <rect x="14" y="14" width="7" height="7" rx="1.5" fill="currentColor" opacity="0.6" />
+                </svg>
+                <div className="flex-1">
+                  <span className="font-semibold text-[15px] text-foreground block">{t("profile.iosShortcut")}</span>
+                  <span className="text-text-muted text-[12px]">{t("profile.shareFromSafari")}</span>
+                </div>
+                <ChevronRightIcon className="text-text-muted" />
+              </motion.div>
             </div>
           </div>
 
@@ -196,6 +216,9 @@ export default function ProfileScreen() {
       </AnimatePresence>
       <AnimatePresence>
         {showSharedLists && <SharedListsScreen onClose={() => setShowSharedLists(false)} />}
+      </AnimatePresence>
+      <AnimatePresence>
+        {showIOSShortcut && <IOSShortcutScreen onClose={() => setShowIOSShortcut(false)} />}
       </AnimatePresence>
     </>
   );
