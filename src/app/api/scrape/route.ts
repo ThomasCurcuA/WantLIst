@@ -281,7 +281,7 @@ function extractFromHtml(html: string, sourceUrl: string): ScrapeResult | null {
 
   // If still no image, try to find one in HTML
   if (!image_url) {
-    image_url = extractProductImage(html, sourceUrl);
+    image_url = extractProductImage(html);
   }
 
   if (!name.trim()) return null;
@@ -376,7 +376,7 @@ function findProductInJsonLd(data: unknown): Record<string, unknown> | null {
 }
 
 /** Extract product image from HTML when meta tags don't have one */
-function extractProductImage(html: string, _sourceUrl: string): string | null {
+function extractProductImage(html: string): string | null {
   // Try data-src, data-lazy-src first (lazy-loaded images)
   const lazyPatterns = [
     /<img[^>]*(?:data-src|data-lazy-src|data-original)=["'](https?:\/\/[^"']+)["'][^>]*>/gi,

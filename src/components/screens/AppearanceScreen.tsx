@@ -80,12 +80,6 @@ export default function AppearanceScreen({ onClose }: { onClose: () => void }) {
   const [pendingLang, setPendingLang] = useState<Language>(language);
   const [saved, setSaved] = useState(false);
 
-  const _hasChanges =
-    accentColor !== stored.accentColor ||
-    cardRadius !== stored.cardRadius ||
-    themeMode !== stored.mode ||
-    pendingLang !== language;
-
   // Live preview: apply changes as user selects
   useEffect(() => {
     applyTheme({ accentColor, cardRadius, mode: themeMode });
