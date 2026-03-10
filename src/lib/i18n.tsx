@@ -219,6 +219,10 @@ const translations: Record<Language, Record<string, string>> = {
     "shared.message": "Message",
     "profile.sharedLists": "Shared Lists",
     "profile.listsReceived": "lists received",
+
+    // Clipboard detection
+    "clipboard.found": "URL found in clipboard",
+    "clipboard.add": "Add to Wishlist",
   },
   it: {
     // Navigation
@@ -432,6 +436,10 @@ const translations: Record<Language, Record<string, string>> = {
     "shared.message": "Messaggio",
     "profile.sharedLists": "Liste Condivise",
     "profile.listsReceived": "liste ricevute",
+
+    // Clipboard detection
+    "clipboard.found": "URL trovato negli appunti",
+    "clipboard.add": "Aggiungi alla Wishlist",
   },
 };
 
