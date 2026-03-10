@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1290 2796">
+  <rect width="1290" height="2796" fill="#F8F9FB"/>
+  <!-- Ambient glow -->
+  <circle cx="645" cy="1300" r="280" fill="#E93D5D" opacity="0.08"/>
+  <!-- Logo rounded rect -->
+  <rect x="549" y="1204" width="192" height="192" rx="48" fill="#E93D5D"/>
+  <!-- W letter -->
+  <text x="645" y="1330" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Helvetica Neue,Arial,sans-serif" font-weight="800" font-size="88" fill="white">W</text>
+  <!-- App name -->
+  <text x="645" y="1470" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Helvetica Neue,Arial,sans-serif" font-weight="800" font-size="56" fill="#1A1D2E">Want<tspan fill="#E93D5D">List</tspan></text>
+  <!-- Subtitle -->
+  <text x="645" y="1520" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Helvetica Neue,Arial,sans-serif" font-weight="500" font-size="26" fill="#8E92A4">Track your dream purchases</text>
+  <!-- Decorative circles -->
+  <circle cx="180" cy="2500" r="120" fill="#E93D5D" opacity="0.04"/>
+  <circle cx="900" cy="2600" r="160" fill="#E93D5D" opacity="0.03"/>
+  <circle cx="550" cy="2700" r="80" fill="#E93D5D" opacity="0.05"/>
+</svg>

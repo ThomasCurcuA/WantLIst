@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx create-next-app@14 . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm)",
+      "Bash(npx create-next-app@14 temp-wantlist --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm)",
+      "Bash(npm install @supabase/supabase-js @supabase/auth-helpers-nextjs framer-motion canvas-confetti next-pwa)",
+      "Bash(npm install --save-dev @types/canvas-confetti)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(node -e \":*)",
+      "Bash(npm ls tailwindcss)",
+      "Bash(npx next build)",
+      "Bash(npm install eslint-plugin-react --save-dev)",
+      "Bash(taskkill /f /im node.exe)"
+    ]
+  }
+}

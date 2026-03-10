@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --sat: env(safe-area-inset-top);
+  --sab: env(safe-area-inset-bottom);
+  --sal: env(safe-area-inset-left);
+  --sar: env(safe-area-inset-right);
+  --accent-color: #E93D5D;
+  --card-radius: 24px;
+
+  /* Theme colors */
+  --color-bg: #F8F9FB;
+  --color-fg: #1A1D2E;
+  --color-card: #FFFFFF;
+  --color-surface: #F0F1F5;
+  --color-nav: #1A1D2E;
+  --color-text-muted: #8E92A4;
+  --color-text-secondary: #6B7080;
+  --color-border: #E8EAF0;
+  --color-accent-light: #FEE2E8;
+  --color-green-badge: #22C55E;
+  --shadow-card: 0 2px 16px rgba(0,0,0,0.04);
+  --shadow-card-lg: 0 4px 24px rgba(0,0,0,0.06);
+  --shadow-nav: 0 -4px 24px rgba(0,0,0,0.08);
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --color-bg: #0F1117;
+  --color-fg: #E8EAF0;
+  --color-card: #1A1D2E;
+  --color-surface: #252838;
+  --color-nav: #0D0F15;
+  --color-text-muted: #6B7080;
+  --color-text-secondary: #8E92A4;
+  --color-border: #2A2D3E;
+  --color-accent-light: #3D1520;
+  --color-green-badge: #22C55E;
+  --shadow-card: 0 2px 16px rgba(0,0,0,0.25);
+  --shadow-card-lg: 0 4px 24px rgba(0,0,0,0.35);
+  --shadow-nav: 0 -4px 24px rgba(0,0,0,0.4);
+  color-scheme: dark;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+input, textarea, select {
+  font-size: 16px !important; /* Prevents iOS zoom on focus */
+}
+
+/* Scrollbar styling */
+.scrollable::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollable {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Safe area padding helpers */
+.safe-top {
+  padding-top: max(env(safe-area-inset-top), 12px);
+}
+
+.safe-bottom {
+  padding-bottom: max(env(safe-area-inset-bottom), 12px);
+}
