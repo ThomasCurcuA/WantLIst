@@ -217,7 +217,7 @@ function SharedListDetail({ list, onClose }: { list: SharedList; onClose: () => 
 }
 
 export default function SharedListsScreen({ onClose }: { onClose: () => void }) {
-  const { sharedLists, fetchSharedLists } = useApp();
+  const { sharedLists } = useApp();
   const t = useT();
   const [selectedList, setSelectedList] = useState<SharedList | null>(null);
 

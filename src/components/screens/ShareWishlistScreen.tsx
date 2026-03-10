@@ -8,7 +8,7 @@ import type { Profile } from "@/types";
 import type { SharedWishItem } from "@/types";
 
 export default function ShareWishlistScreen({ onClose }: { onClose: () => void }) {
-  const { wishes, searchUsers, shareWishes, profile } = useApp();
+  const { wishes, searchUsers, shareWishes } = useApp();
   const t = useT();
   const activeWishes = wishes.filter((w) => !w.is_bought);
 

@@ -247,8 +247,8 @@ function extractFromHtml(html: string, sourceUrl: string): ScrapeResult | null {
   const pageTitle = extractTag(html, "title");
 
   // Build name: prefer JSON-LD product name, then og:title, then <title>
-  let name = jsonLdData.name || ogTitle || pageTitle || "";
-  let notes = jsonLdData.description || ogDesc || metaDesc || null;
+  const name = jsonLdData.name || ogTitle || pageTitle || "";
+  const notes = jsonLdData.description || ogDesc || metaDesc || null;
 
   // Build price: prefer JSON-LD, then meta tags, then HTML patterns
   let price = jsonLdData.price;
@@ -376,7 +376,7 @@ function findProductInJsonLd(data: unknown): Record<string, unknown> | null {
 }
 
 /** Extract product image from HTML when meta tags don't have one */
-function extractProductImage(html: string, sourceUrl: string): string | null {
+function extractProductImage(html: string, _sourceUrl: string): string | null {
   // Try data-src, data-lazy-src first (lazy-loaded images)
   const lazyPatterns = [
     /<img[^>]*(?:data-src|data-lazy-src|data-original)=["'](https?:\/\/[^"']+)["'][^>]*>/gi,

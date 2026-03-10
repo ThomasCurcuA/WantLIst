@@ -80,7 +80,7 @@ export default function AppearanceScreen({ onClose }: { onClose: () => void }) {
   const [pendingLang, setPendingLang] = useState<Language>(language);
   const [saved, setSaved] = useState(false);
 
-  const hasChanges =
+  const _hasChanges =
     accentColor !== stored.accentColor ||
     cardRadius !== stored.cardRadius ||
     themeMode !== stored.mode ||
