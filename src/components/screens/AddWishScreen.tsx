@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useApp } from "@/contexts/AppContext";
 import { useT } from "@/lib/i18n";
@@ -21,13 +21,14 @@ function SearchIcon({ className }: { className?: string }) {
   );
 }
 
-export default function AddWishScreen({ onClose }: { onClose: () => void }) {
+export default function AddWishScreen({ onClose, initialUrl }: { onClose: () => void; initialUrl?: string }) {
   const { addWish, categories } = useApp();
   const t = useT();
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const hasAutoScraped = useRef(false);
 
-  // Mode toggle
-  const [mode, setMode] = useState<InputMode>("manual");
+  // Mode toggle — start in link mode if shared URL provided
+  const [mode, setMode] = useState<InputMode>(initialUrl ? "link" : "manual");
 
   // Shared fields
   const [name, setName] = useState("");
@@ -41,8 +42,8 @@ export default function AddWishScreen({ onClose }: { onClose: () => void }) {
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
 
-  // Link mode
-  const [productUrl, setProductUrl] = useState("");
+  // Link mode — pre-fill URL if shared from another app
+  const [productUrl, setProductUrl] = useState(initialUrl || "");
   const [scraping, setScraping] = useState(false);
   const [scrapeError, setScrapeError] = useState("");
   const [scraped, setScraped] = useState<ScrapedProduct | null>(null);
@@ -56,6 +57,47 @@ export default function AddWishScreen({ onClose }: { onClose: () => void }) {
   const [imageSearchError, setImageSearchError] = useState("");
 
   const priorityIndex = priorities.indexOf(priority);
+
+  // Auto-scrape when opened with a shared URL
+  useEffect(() => {
+    if (initialUrl && !hasAutoScraped.current) {
+      hasAutoScraped.current = true;
+      // Small delay to let the UI render first
+      const timer = setTimeout(() => {
+        handleScrapeAuto(initialUrl);
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialUrl]);
+
+  const handleScrapeAuto = async (url: string) => {
+    setScraping(true);
+    setScrapeError("");
+    try {
+      const res = await fetch("/api/scrape", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url: url.trim() }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setScrapeError(data.error || "Failed to scrape");
+        return;
+      }
+      setScraped(data);
+      setName(data.name || "");
+      setNotes(data.notes || "");
+      setPrice(data.price != null ? String(data.price) : "");
+      setImagePreview(data.image_url || null);
+      setImageSearchQuery(data.name || "");
+      setShowConfirm(true);
+    } catch {
+      setScrapeError("Network error");
+    } finally {
+      setScraping(false);
+    }
+  };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];

@@ -19,6 +19,7 @@ import type { Wish } from "@/types";
 function AppContent() {
   const { user, loading, activeTab } = useApp();
   const [showAddWish, setShowAddWish] = useState(false);
+  const [sharedUrl, setSharedUrl] = useState<string | null>(null);
   const [selectedWish, setSelectedWish] = useState<Wish | null>(null);
   const [showSplash, setShowSplash] = useState(true);
   const [splashAnimDone, setSplashAnimDone] = useState(false);
@@ -34,6 +35,24 @@ function AppContent() {
   useEffect(() => {
     loadThemeFromStorage();
   }, []);
+
+  // Check for shared URL from Web Share Target
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const url = params.get("shared_url");
+    if (url) {
+      setSharedUrl(url);
+      // Clean URL without reloading page
+      window.history.replaceState({}, "", "/");
+    }
+  }, []);
+
+  // Auto-open AddWish when shared URL is detected and splash is done
+  useEffect(() => {
+    if (sharedUrl && !showSplash && user) {
+      setShowAddWish(true);
+    }
+  }, [sharedUrl, showSplash, user]);
 
   // Dismiss splash when both data is loaded AND animation is complete
   useEffect(() => {
@@ -81,7 +100,12 @@ function AppContent() {
           <BottomNav onFabPress={() => setShowAddWish(true)} />
 
           <AnimatePresence>
-            {showAddWish && <AddWishScreen onClose={() => setShowAddWish(false)} />}
+            {showAddWish && (
+              <AddWishScreen
+                onClose={() => { setShowAddWish(false); setSharedUrl(null); }}
+                initialUrl={sharedUrl || undefined}
+              />
+            )}
           </AnimatePresence>
 
           <AnimatePresence>
